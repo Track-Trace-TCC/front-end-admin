@@ -2,32 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    /* Substitua os valores HSL pelas suas cores correspondentes */
+    --background: 255 0% 100%; /* Branco */
+    --foreground: 207 13% 18%; /* Cinza Escuro */
+
+    --card: 240 9% 95%; /* Branco */
+    --card-foreground: 207 13% 18%; /* Cinza Escuro */
+
+    --popover: 255 0% 100%; /* Branco */
+    --popover-foreground: 207 13% 18%; /* Cinza Escuro */
+
+    --primary: 209 100% 33%;  /* Azul */
+    --primary-foreground: 0 0% 100%; /* Branco */
+
+    --secondary: 39 100% 50%; /* Amarelo */
+    --secondary-foreground: 207 13% 18%; /* Cinza Escuro */
+
+    --muted: 174 100% 29%; /* Vermelho */
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 141 76% 53%; /* Verde */
+    --accent-foreground: 204 100% 50%; /* Azul */
+
+    --destructive: 0 79% 63%; /* Vermelho */
+    --destructive-foreground: 0 0% 100%; /* Branco */
+
+    --border: 207 13% 80%; /* Cinza Claro */
+    --input: 207 13% 80%; /* Cinza Claro */
+    --ring: 207 13% 18%; /* Cinza Escuro */
+
+    --radius: 0.375rem; /* Raio de borda personalizado */
+  }
+
+  .dark {
+    --background: 19 28% 17%; /* Cinza Muito Escuro */
+    --foreground: 0 0% 100%; /* Branco */
+
+    --card: 19 28% 17%; /* Cinza Muito Escuro */
+    --card-foreground: 0 0% 100%; /* Branco */
+
+    --popover: 19 28% 17%; /* Cinza Muito Escuro */
+    --popover-foreground: 0 0% 100%; /* Branco */
+
+    --primary: 0 0% 100%; /* Branco */
+    --primary-foreground: 204 100% 50%; /* Azul */
+
+    --secondary: 48 100% 88%; /* Amarelo Claro */
+    --secondary-foreground: 0 0% 100%; /* Branco */
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 58 100% 50%; /* Verde Claro */
+
+       --accent: 240 4.8% 95.9%;
+    --accent-foreground: 0 0% 100%; /* Branco */
+
+    --destructive: 360 100% 67%; /* Vermelho Claro */
+    --destructive-foreground: 0 0% 100%; /* Branco */
+
+    --border: 58 100% 50%; /* Verde Claro */
+    --input: 58 100% 50%; /* Verde Claro */
+    --ring: 204 100% 50%; /* Azul */
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  font-family: "Poppins";
 }
