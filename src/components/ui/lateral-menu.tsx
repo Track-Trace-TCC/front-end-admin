@@ -1,7 +1,6 @@
-'use client'
-
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname, redirect } from 'next/navigation';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -18,6 +17,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const isActive = (path: string) => {
     return path == pathname;
   };
+
+  const handleNavigation = (path: string) => {
+    redirect(path);
+    onClose();
+  };
+
   return (
     <>
       <div
@@ -35,12 +40,50 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
         <nav className="flex-grow p-4">
           <div className="flex items-center">
-            <div className="border-l-4 border-primary pr-2" style={{ height: '1.5em' }}></div>
-            <a href="/" className="block p-2 mt-2 text-gray-700 bg-gray-200 rounded-lg">Início</a>
+            <div className={`border-l-4 ${isActive("/") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/" onClick={() => handleNavigation("/")} legacyBehavior>
+                <a className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
+                  Início
+                </a>
+              </Link>
+            </div>
           </div>
-
-
-          {/* Adicione mais itens de navegação conforme necessário */}
+          <div className="flex items-center">
+            <div className={`border-l-4 ${isActive("/entregas") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/entregas" onClick={() => handleNavigation("/entregas")} legacyBehavior>
+                <a className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
+                  Entregas
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className={`border-l-4 ${isActive("/motoristas") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/motoristas" onClick={() => handleNavigation("/motoristas")} legacyBehavior>
+                <a className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
+                  Motoristas
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className={`border-l-4 ${isActive("/administradores") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/administradores" onClick={() => handleNavigation("/administradores")} legacyBehavior>
+                <a className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
+                  Administradores
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className={`border-l-4 ${isActive("/rotas") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/rotas" onClick={() => handleNavigation("/rotas")} legacyBehavior>
+                <a className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
+                  Rotas
+                </a>
+              </Link>
+            </div>
+          </div>
         </nav>
         <div className="p-4 mt-auto">
           {/* Seus links para perfil, configurações, etc. */}
