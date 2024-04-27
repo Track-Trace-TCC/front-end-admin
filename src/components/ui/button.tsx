@@ -38,7 +38,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  isLoading?: boolean // Adiciona a prop isLoading
+  isLoading?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -49,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }), isLoading && 'cursor-wait')}
         ref={ref}
-        disabled={isLoading} // Desativa o botão enquanto isLoading for verdadeiro
+        disabled={isLoading}
         {...props}
       >
         {isLoading ? (

@@ -21,16 +21,17 @@ api.interceptors.request.use((config: any) => {
 
 api.interceptors.response.use(
     (response: AxiosResponse) => {
-        if (response.status === 401) {
-            localStorage.removeItem('token');
-            const router = useRouter();
-            router.push('/auth');;
-        }
         return response;
     },
     (error) => {
+        if (error.response && error.response.status === 401) {
+            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
+            window.location.href = '/auth';
+        }
         return Promise.reject(error);
     }
 );
+
 
 export default api;
