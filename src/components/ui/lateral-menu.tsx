@@ -59,8 +59,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
           <div className="flex items-center">
-            <div className={`border-l-4 ${isActive("/motoristas") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
-              <Link href="/motoristas" legacyBehavior>
+            <div className={`border-l-4 ${isActive("/drivers") ? "border-primary" : "border-transparent"} pr-2 flex items-center`}>
+              <Link href="/drivers" legacyBehavior>
                 <a onClick={() => handleNavigation("/motoristas")} className="block p-2 text-gray-700 rounded-lg hover:underline cursor-pointer">
                   Motoristas
                 </a>
