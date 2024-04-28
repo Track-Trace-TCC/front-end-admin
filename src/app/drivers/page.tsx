@@ -86,8 +86,7 @@ function DriversPage() {
                 const driversWithLocation: Driver[] = await Promise.all(
                     driversData.map(async (driver) => {
                         if (driver.localizacaoAtual?.lat && driver.localizacaoAtual?.lng) {
-                            const { city, neighborhood } = await reverseGeocode(driver.localizacaoAtual.lat, driver.localizacaoAtual.lng);
-                            const formattedLocation = `${neighborhood}, ${city}`;
+                            const formattedLocation = await reverseGeocode(driver.localizacaoAtual.lat.toString(), driver.localizacaoAtual.lng.toString());
                             return { ...driver, formatted_address: formattedLocation };
                         } else {
                             return { ...driver, formatted_address: 'Sem viagem iniciada' };

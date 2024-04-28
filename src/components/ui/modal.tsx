@@ -14,10 +14,19 @@ const Modal: FC<ModalProps> = ({ isOpen, title, children, isLoading, onConfirm, 
     const modalRef = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = (event: MouseEvent) => {
-        if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        const target = event.target as Node;
+        const trigger = document.querySelector('[data-radix-dropdown-menu-trigger]');
+
+        if (
+            modalRef.current &&
+            !modalRef.current.contains(target) &&
+            trigger &&
+            !trigger.contains(target)
+        ) {
             onCancel();
         }
     };
+
 
     useEffect(() => {
         if (isOpen) {
