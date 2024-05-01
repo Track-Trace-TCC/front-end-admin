@@ -81,7 +81,6 @@ function formatStatus(status: Status): string {
 
 async function transformPackageData(apiData: PackageApiResponse): Promise<Package> {
     const destinyJson = JSON.parse(apiData.destino);
-    console.log(destinyJson);
     const formattedDestiny = await reverseGeocode(destinyJson.latitude, destinyJson.longitude);
 
 
@@ -144,7 +143,12 @@ function PackagesPage() {
     async function fetchPackages() {
         try {
             const response = await axios.get<PackageApiResponse[]>(`/package?search=${search}`);
-            const packages = await Promise.all(response.data.map(transformPackageData));
+            const packages = [];
+            for (let i = 0; i < response.data.length; i++) {
+                const packageData = await transformPackageData(response.data[i]);
+                packages.push(packageData);
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
             setPackage(packages);
         } catch (error) {
             console.error('Erro ao buscar pacotes:', error);

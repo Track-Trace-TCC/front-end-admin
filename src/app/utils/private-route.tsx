@@ -12,6 +12,7 @@ const PrivateRoute = (Page: ComponentTypeWithProps) => {
             if (!token) {
                 window.location.href = '/auth';
             } else {
+                setIsLoading(false);
                 setIsAuthenticated(true);
             }
             setIsLoading(false);
