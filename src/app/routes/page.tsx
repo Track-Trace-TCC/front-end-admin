@@ -8,7 +8,7 @@ import { socket } from "@/app/utils/socket-io";
 import { Icon } from '@iconify/react/dist/iconify.js';
 import PrivateRoute from "../utils/private-route";
 
-export function AdminPage() {
+function AdminPage() {
     const mapContainerRef = useRef<HTMLDivElement>(null);
     const map = useMap(mapContainerRef);
     const [activeRoutes, setActiveRoutes] = useState<any[]>([]);
@@ -20,7 +20,7 @@ export function AdminPage() {
             motorista: any; route_id: string, driver_id: string, lat: number, lng: number
         }) => {
             if (data?.route_id && map && !map?.hasRoute(data.route_id)) {
-                const response = await fetch(`http://localhost:3000/routes/${data.route_id}`);
+                const response = await fetch(`http://35.196.84.245/routes/${data.route_id}`);
                 const route: any = await response.json();
 
                 const legs = route.directions.routes[0].legs.map((leg: { start_location: any; end_location: any; }) => ({

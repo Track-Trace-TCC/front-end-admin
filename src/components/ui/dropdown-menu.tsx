@@ -249,6 +249,16 @@ const DropdownSelect = ({
     </DropdownMenu>
   );
 };
+DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
+DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger";
+DropdownMenuSubContent.displayName = "DropdownMenuSubContent";
+DropdownMenuContent.displayName = "DropdownMenuContent";
+DropdownMenuItem.displayName = "DropdownMenuItem";
+DropdownMenuCheckboxItem.displayName = "DropdownMenuCheckboxItem";
+DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem";
+DropdownMenuLabel.displayName = "DropdownMenuLabel";
+DropdownMenuSeparator.displayName = "DropdownMenuSeparator";
+DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 export {
   DropdownMenu,
   DropdownMenuTrigger,

@@ -1,5 +1,7 @@
+'use client'
+
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { useRouter } from 'next/router';
+
 
 
 const api = axios.create({
@@ -7,6 +9,8 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config: any) => {
+    console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL);
+
     config.headers = config.headers || {};
 
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
