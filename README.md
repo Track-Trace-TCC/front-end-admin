@@ -30,8 +30,8 @@ Siga os passos abaixo para configurar e executar o front-end localmente.
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/Track-Trace-TCC/front-end-administrativo.git
-    cd front-end-administrativo
+    git clone https://github.com/Track-Trace-TCC/front-end-admin
+    cd front-end-admin
     ```
 
 2. Instale as dependências:
